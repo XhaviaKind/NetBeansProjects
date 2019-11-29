@@ -7,10 +7,10 @@ package frames;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import mymedicines.Allergies;
-import mymedicines.BodyPain;
-import mymedicines.Cough;
-import mymedicines.Headache;
+//import mymedicines.Allergies;
+//import mymedicines.BodyPain;
+//import mymedicines.Cough;
+//import mymedicines.Headache;
 
 /**
  *
@@ -42,9 +42,10 @@ public class BuyMed extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         allergyBtn = new javax.swing.JButton();
         bodyPainBtn = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        coughBtn = new javax.swing.JButton();
         headacheBtn = new javax.swing.JButton();
         buyLabel = new javax.swing.JLabel();
+        cancelBtn = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -61,7 +62,7 @@ public class BuyMed extends javax.swing.JFrame {
 
         bodyPainBtn.setText("Body Pain");
 
-        jButton3.setText("coughBtn");
+        coughBtn.setText("Cough");
 
         headacheBtn.setText("Headache");
 
@@ -69,14 +70,14 @@ public class BuyMed extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(allergyBtn)
                 .addGap(34, 34, 34)
                 .addComponent(bodyPainBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(48, 48, 48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(coughBtn)
+                .addGap(38, 38, 38)
                 .addComponent(headacheBtn)
                 .addGap(50, 50, 50))
         );
@@ -87,7 +88,7 @@ public class BuyMed extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(allergyBtn)
                     .addComponent(bodyPainBtn)
-                    .addComponent(jButton3)
+                    .addComponent(coughBtn)
                     .addComponent(headacheBtn))
                 .addContainerGap(148, Short.MAX_VALUE))
         );
@@ -98,22 +99,34 @@ public class BuyMed extends javax.swing.JFrame {
         buyLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         buyLabel.setText("Buy Medicine");
 
+        cancelBtn.setText("Cancel");
+        cancelBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buyLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(buyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelBtn)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(buyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelBtn))
                 .addGap(7, 7, 7)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -132,6 +145,13 @@ public class BuyMed extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBtnMouseClicked
+        // TODO add your handling code here:
+        TransactionPage tp = new TransactionPage();
+        this.setVisible(false);
+        tp.setVisible(true);
+    }//GEN-LAST:event_cancelBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -173,8 +193,9 @@ public class BuyMed extends javax.swing.JFrame {
     private javax.swing.JButton allergyBtn;
     private javax.swing.JButton bodyPainBtn;
     private javax.swing.JLabel buyLabel;
+    private javax.swing.JButton cancelBtn;
+    private javax.swing.JButton coughBtn;
     private javax.swing.JButton headacheBtn;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToggleButton jToggleButton1;

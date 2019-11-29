@@ -14,10 +14,13 @@ import java.sql.ResultSet;
  * @author but-anonju_sd2022
  */
 public class CRUD {
+
+    final String myDriver = "com.mysql.jdbc.Driver";
+    final String myUrl = "jdbc:mysql://localhost/but-anon";
+
     public Connection connectToDB() {
         try {
-            String myDriver = "com.mysql.jdbc.Driver";
-            String myUrl = "jdbc:mysql://localhost/but-anon";
+
             Class.forName(myDriver);
             Connection connection = DriverManager.getConnection(myUrl, "root", "");
             return connection;
