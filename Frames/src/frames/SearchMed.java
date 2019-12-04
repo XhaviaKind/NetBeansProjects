@@ -9,10 +9,6 @@ import Transactions.CustomerTransaction;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
-//import mymedicines.Allergies;
-//import mymedicines.BodyPain;
-//import mymedicines.Cough;
-//import mymedicines.Headache;
 
 /**
  *
@@ -21,7 +17,7 @@ import javax.swing.JOptionPane;
 public class SearchMed extends javax.swing.JFrame {
 
     CustomerTransaction ct = new CustomerTransaction();
-    
+
     /**
      * Creates new form SearchMed
      */
@@ -29,6 +25,7 @@ public class SearchMed extends javax.swing.JFrame {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+        customreTable.setModel(ct.tableAllergyMed());
     }
 
     /**
@@ -71,22 +68,7 @@ public class SearchMed extends javax.swing.JFrame {
 
         customreTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Generic Name", "Brand Name", "Price", "Quantity", "Description"
@@ -98,6 +80,11 @@ public class SearchMed extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        customreTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customreTableMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(customreTable);
@@ -181,31 +168,39 @@ public class SearchMed extends javax.swing.JFrame {
     private void cancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBtnMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        TransactionPage tp = new TransactionPage();
+        CustomerHomePage tp = new CustomerHomePage();
         tp.setVisible(true);
     }//GEN-LAST:event_cancelBtnMouseClicked
 
     private void medicineOptionNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicineOptionNavActionPerformed
         // TODO add your handling code here:
         Object selected = medicineOptionNav.getSelectedItem();
-        
-        if(selected.equals("Medicines for Allergy")){
-//            JOptionPane.showMessageDialog(rootPane, selected);
+        System.out.println(selected);
+        if (selected.equals("Medicines for Allergy")) {
             customreTable.setModel(ct.tableAllergyMed());
         }
-        if(selected.equals("Medicines for Body Pain")){
-//            JOptionPane.showMessageDialog(rootPane, selected);
+        if (selected.equals("Medicines for Body Pain")) {
             customreTable.setModel(ct.tableBodyPainMed());
         }
-        if(selected.equals("Medicines for Cough")){
-//            JOptionPane.showMessageDialog(rootPane, selected);
+        if (selected.equals("Medicines for Cough")) {
             customreTable.setModel(ct.tableCoughMed());
         }
-        if(selected.equals("Medicines for Headache")){
-//            JOptionPane.showMessageDialog(rootPane, selected);
+        if (selected.equals("Medicines for Headache")) {
             customreTable.setModel(ct.tableHeadacheMed());
         }
     }//GEN-LAST:event_medicineOptionNavActionPerformed
+
+    private void customreTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customreTableMouseClicked
+        // TODO add your handling code here:
+        int row = customreTable.getSelectedRow();
+        int column = customreTable.getSelectedColumn();
+        String data = "";
+        for (int i = 0; i <= column; i++) {
+            data += customreTable.getValueAt(row, i) + "\n";
+        }
+        JOptionPane.showMessageDialog(rootPane, data);
+        data = "";
+    }//GEN-LAST:event_customreTableMouseClicked
 
     /**
      * @param args the command line arguments

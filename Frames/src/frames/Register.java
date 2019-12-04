@@ -7,6 +7,7 @@ package frames;
 
 import DB.CRUD;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -15,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,8 +32,8 @@ public class Register extends javax.swing.JFrame {
     static String lastname;
     static String username;
     static String pass;
-    static String status;
-    
+    static String role;
+
     /**
      * Creates new form Register
      */
@@ -39,6 +41,11 @@ public class Register extends javax.swing.JFrame {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+    
+        ButtonGroup group = new ButtonGroup();
+        group.add(customerRadioBtn);
+        group.add(pharmacistRadioBtn);
+   
     }
 
     /**
@@ -243,12 +250,12 @@ public class Register extends javax.swing.JFrame {
         username = uname.getText();
         pass = password.getText();
         encryptPassword(pass);
-        if (!firstname.equals("") && !lastname.equals("") && !username.equals("") && !pass.equals("")) {
+        if (firstname.length() > 0 && lastname.length() > 0 && username.length() > 0 && pass.length() > 0) {
             try {
 //                String query = "INSERT INTO users (FirstName,LastName,Username,Password)" + "VALUES('" + firstname + "','"
 //                        + lastname + "','" + username + "','" + generatedPass + "')";
-                String query = "INSERT INTO users (FirstName,LastName,Username,Password,Status)" + "VALUES('" + firstname + "','"
-                        + lastname + "','" + username + "','" + pass + "','" + status + "')";
+                String query = "INSERT INTO users (FirstName,LastName,Username,Password,Role)" + "VALUES('" + firstname + "','"
+                        + lastname + "','" + username + "','" + pass + "','" + role + "')";
                 String accountQuery = "SELECT Username FROM users WHERE Username=" + "\"" + username + "\"" + ";";
                 String account = null;
                 Connection connection = crud.connectToDB();
@@ -260,14 +267,16 @@ public class Register extends javax.swing.JFrame {
                     crud.addData(query);
                     JOptionPane.showMessageDialog(rootPane, "Added");
                     this.setVisible(false);
-                    TransactionPage tp = new TransactionPage();
-                    tp.setVisible(true);
+                    Login login = new Login();
+                    login.setVisible(true);
+                }else {
+                    JOptionPane.showMessageDialog(rootPane, "Username already exist!");
                 }
                 connection.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
             }
-    
+
         } else {
             JOptionPane.showMessageDialog(null, "Something is wrong! Please check your input", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -275,19 +284,19 @@ public class Register extends javax.swing.JFrame {
 
     private void cancelbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelbtnMouseClicked
         // TODO add your handling code here:
-        HomePage homepage = new HomePage();
-        homepage.setVisible(true);
+        Login login = new Login();
+        login.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_cancelbtnMouseClicked
 
     private void customerRadioBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerRadioBtnMouseClicked
         // TODO add your handling code here:
-        status = "Customer";
+        role = "Customer";
     }//GEN-LAST:event_customerRadioBtnMouseClicked
 
     private void pharmacistRadioBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pharmacistRadioBtnMouseClicked
         // TODO add your handling code here:
-        status = "Pharmacist";
+        role = "Pharmacist";
     }//GEN-LAST:event_pharmacistRadioBtnMouseClicked
 
     private String encryptPassword(String passw) {

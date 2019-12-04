@@ -47,5 +47,5 @@ public class Headache extends Medicine {
         return headache3;
     }
 
-}
+}// INSERT INTO medicine (Med_For, Generic_Name, Brand_Name, Price, Quantity,Description) VALUES("Headache", "Ibuprofen Systemic", "Motrin", 18.00, 10, "Nonsteroidal anti-inflammatory drugs")
 

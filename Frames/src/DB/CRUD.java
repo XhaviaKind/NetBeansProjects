@@ -16,7 +16,7 @@ import java.sql.ResultSet;
 public class CRUD {
 
     final String myDriver = "com.mysql.jdbc.Driver";
-    final String myUrl = "jdbc:mysql://localhost/but-anon";
+    final String myUrl = "jdbc:mysql://localhost/butanon";
 
     public Connection connectToDB() {
         try {
