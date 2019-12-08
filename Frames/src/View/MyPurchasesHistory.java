@@ -26,8 +26,6 @@ public class MyPurchasesHistory extends javax.swing.JFrame {
     DefaultTableModel tm;
     double totalAmount = 0;
     BuyMed bm = new BuyMed();
-    
-//    int qty = bm.getQty();
 
     /**
      * Creates new form MyPurchasesHistory
@@ -38,25 +36,40 @@ public class MyPurchasesHistory extends javax.swing.JFrame {
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
 
-//    public void updateData() {
-//        int row = purchasehistoryTable.getRowCount();
+    public void updateData() {
+        int row = purchasehistoryTable.getRowCount();
 //        int col = purchasehistoryTable.getColumnCount();
-//        try {
-//            Connection conn = new CRUD().connectToDB();
-//            for (int i = 0; i < row; i++) {
-//                String updateMed = "UPDATE medicine SET Quantity=" + (purchasehistoryTable.getValueAt(i, 3))
-//                        + " WHERE GenericName= " + "\"" + (purchasehistoryTable.getValueAt(i, 1)) + "\"" + ";";
-//                Statement statement = conn.createStatement();
-//                statement.executeUpdate(updateMed);
-//                JOptionPane.showMessageDialog(rootPane, (purchasehistoryTable.getValueAt(i, 3)));
-//            }
-//
-//            conn.close();
-////            JOptionPane.showMessageDialog(rootPane, qtyUpdate);
-//        } catch (SQLException ex) {
+        try {
+            int quantity = 0;
+            String bName = null;
+            int purchQuantity = 0;
+            Connection conn = new CRUD().connectToDB();
+            for (int i = 0; i < row; i++) {
+                purchQuantity = Integer.parseInt(purchasehistoryTable.getValueAt(i, 3).toString());
+                String qty = "SELECT Quantity, BrandName FROM medicine WHERE BrandName = " + "\"" + (tm.getValueAt(i, 1).toString()) + "\"" + ";";
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(qty);
+
+                while (resultSet.next()) {
+                    quantity = resultSet.getInt("Quantity");
+                    bName = resultSet.getString("BrandName");
+                    System.out.println("quantity : " + quantity);
+                }
+                System.out.println("purchase Quantity : " + purchQuantity);
+
+                JOptionPane.showMessageDialog(rootPane, "Qunatity to be bought : " + (tm.getValueAt(i, 3)));
+            }
+            String updateMed = "UPDATE medicine SET Quantity = " + (quantity - purchQuantity)
+                    + " WHERE BrandName = " + "\"" + bName + "\"" + ";";
+            Statement statement1 = conn.createStatement();
+            statement1.executeUpdate(updateMed);
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
 //            System.out.println(ex.getMessage());
-//        }
-//    }
+        }
+    }
 
     public void viewOrders() {
         String accountQuery = "SELECT * FROM purchase_history";
@@ -71,12 +84,12 @@ public class MyPurchasesHistory extends javax.swing.JFrame {
                 totalAmount += rsAcc.getDouble("Price") * rsAcc.getInt("Quantity");
             }
 
-            totalAmountToPay.setText("Php " + Integer.parseInt(String.valueOf(totalAmount)));
-//            updateData();
+            totalAmountToPay.setText("Php " + String.valueOf(totalAmount));
+            updateData();
             connection.close();
         } catch (Exception e) {
             System.err.println("Got an exception!");
-            System.err.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -219,16 +232,19 @@ public class MyPurchasesHistory extends javax.swing.JFrame {
 
     private void checkoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkoutBtnMouseClicked
         try {
+            updateData();
             // TODO add your handling code here:
             String query = "DELETE FROM purchase_history";
             Connection conn = new CRUD().connectToDB();
             Statement statement = conn.createStatement();
-            JOptionPane.showMessageDialog(rootPane, "");
+            JOptionPane.showMessageDialog(rootPane, "You're orders will be deleted after you have checked out");
             statement.executeUpdate(query);
 
         } catch (SQLException ex) {
             Logger.getLogger(MyPurchasesHistory.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
+        tm.setRowCount(0);
         viewOrders();
     }//GEN-LAST:event_checkoutBtnMouseClicked
 

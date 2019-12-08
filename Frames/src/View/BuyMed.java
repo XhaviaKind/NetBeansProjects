@@ -20,7 +20,6 @@ import java.util.List;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 //import mymedicines.Allergies;
 //import mymedicines.BodyPain;
 //import mymedicines.Cough;
@@ -36,6 +35,7 @@ public class BuyMed extends javax.swing.JFrame {
     CustomerTransaction ct = new CustomerTransaction();
     CustomerHomePage tp = new CustomerHomePage();
     String user = tp.getUser();
+    String medforValue;
     String genValue;
     String brandValue;
     double priceValue;
@@ -102,6 +102,8 @@ public class BuyMed extends javax.swing.JFrame {
         priceVal = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         descVal = new javax.swing.JTextArea();
+        medforVal = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         inputQtyLabel = new javax.swing.JLabel();
         inputQty = new javax.swing.JTextField();
         viewBtn = new javax.swing.JButton();
@@ -197,55 +199,64 @@ public class BuyMed extends javax.swing.JFrame {
         descVal.setRows(5);
         jScrollPane2.setViewportView(descVal);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Medicine For :");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(availableQL)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(availableQL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(priceL)
                     .addComponent(bnameL)
                     .addComponent(gnameL)
-                    .addComponent(descriptionL))
+                    .addComponent(descriptionL)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(genericNameVal)
                     .addComponent(brandnameVal)
                     .addComponent(priceVal)
-                    .addComponent(availableQVal, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                    .addComponent(availableQVal, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
+                    .addComponent(medforVal))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gnameL)
-                    .addComponent(genericNameVal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(medforVal, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(genericNameVal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gnameL))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bnameL)
-                    .addComponent(brandnameVal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(brandnameVal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bnameL))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(priceL)
-                    .addComponent(priceVal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(availableQL)
-                    .addComponent(availableQVal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(descriptionL)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(0, 5, Short.MAX_VALUE)
+                        .addComponent(priceL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(availableQVal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(availableQL))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descriptionL)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(priceVal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         inputQtyLabel.setBackground(new java.awt.Color(255, 255, 255));
@@ -277,7 +288,7 @@ public class BuyMed extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(inputQtyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inputQty, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
@@ -440,12 +451,15 @@ public class BuyMed extends javax.swing.JFrame {
     private void medTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medTableMouseClicked
         // TODO add your handling code here:
         int row = medTable.getSelectedRow();
-        genericNameVal.setText(medTable.getValueAt(row, 0).toString());
-        brandnameVal.setText(medTable.getValueAt(row, 1).toString());
-        priceVal.setText(medTable.getValueAt(row, 2).toString());
-        availableQVal.setText(medTable.getValueAt(row, 4).toString());
-        descVal.setText(medTable.getValueAt(row, 3).toString());
+        
+        medforVal.setText(medTable.getValueAt(row, 0).toString());
+        genericNameVal.setText(medTable.getValueAt(row, 1).toString());
+        brandnameVal.setText(medTable.getValueAt(row, 2).toString());
+        priceVal.setText(medTable.getValueAt(row, 3).toString());
+        descVal.setText(medTable.getValueAt(row, 4).toString());
+        availableQVal.setText(medTable.getValueAt(row, 5).toString());
 
+        medforValue = medforVal.getText();
         genValue = genericNameVal.getText();
         brandValue = brandnameVal.getText();
         priceValue = Double.parseDouble(priceVal.getText());
@@ -473,7 +487,7 @@ public class BuyMed extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (!availableQVal.equals("")) {
 
-            if (availableQtyValue > (Integer.parseInt(inputQty.getText()))) { // if quantity available is lesser than the user quantity input
+//            if (availableQtyValue >= (Integer.parseInt(inputQty.getText()))) { // if quantity available is lesser than the user quantity input
                 qtyUpdate = availableQtyValue - Integer.parseInt(inputQty.getText()); // update the quantity to (availble quanty - user quantity input)
 //      
                 try {
@@ -484,22 +498,22 @@ public class BuyMed extends javax.swing.JFrame {
                             + "','" + descValue + "','" + totalAmount + "')";
                     Statement stmt = conn.createStatement();
 
-                    if (qtyUpdate > 0 || Integer.parseInt(inputQty.getText()) < availableQtyValue) {
+//                    if (qtyUpdate > 0 || Integer.parseInt(inputQty.getText()) <= availableQtyValue) {
                         stmt.executeUpdate(query);
                         JOptionPane.showMessageDialog(rootPane, "Added to cart");
                         if (chicken == true) {
                             updateData();
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(rootPane, "Not Enough supply", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
+//                    } else {
+//                        JOptionPane.showMessageDialog(rootPane, "Not Enough supply", "Error", JOptionPane.ERROR_MESSAGE);
+//                    }
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println(ex.getMessage());
                 }
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "There's nothing to be added", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+//            } else {
+//                JOptionPane.showMessageDialog(rootPane, "There's nothing to be added", "Error", JOptionPane.ERROR_MESSAGE);
+//            }
         }
     }//GEN-LAST:event_addToCartBtnMouseClicked
 
@@ -566,6 +580,7 @@ public class BuyMed extends javax.swing.JFrame {
     private javax.swing.JTextField inputQty;
     private javax.swing.JLabel inputQtyLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -575,6 +590,7 @@ public class BuyMed extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JTable medTable;
+    private javax.swing.JTextField medforVal;
     private javax.swing.JLabel priceL;
     private javax.swing.JTextField priceVal;
     private javax.swing.JButton viewBtn;

@@ -23,7 +23,7 @@ public class CustomerOp {
     Statement stmt = null;
 
     public Object[][] viewMedicineForAllergy() {
-        Object[][] data = new Object[10][5];
+        Object[][] data = new Object[10][6];
         
         String selectQuery;
 
@@ -35,11 +35,12 @@ public class CustomerOp {
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(selectQuery);
             while (result.next()) {
-                data[cols][0] = result.getString("GenericName");
-                data[cols][1] = result.getString("BrandName");
-                data[cols][2] = result.getString("Price");
-                data[cols][3] = result.getString("Description");
-                data[cols][4] = result.getString("Quantity");
+                data[cols][0] = result.getString("Med_For");
+                data[cols][1] = result.getString("GenericName");
+                data[cols][2] = result.getString("BrandName");
+                data[cols][3] = result.getString("Price");
+                data[cols][4] = result.getString("Description");
+                data[cols][5] = result.getString("Quantity");
                 ++cols;
             }
             System.out.println(result);
@@ -53,7 +54,7 @@ public class CustomerOp {
 
     public Object[][] viewMedicineForBodyPain() {
 
-        Object[][] data = new Object[10][5];
+        Object[][] data = new Object[10][6];
 
         String selectQuery;
 
@@ -65,11 +66,12 @@ public class CustomerOp {
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(selectQuery);
             while (result.next()) {
-                data[cols][0] = result.getString("GenericName");
-                data[cols][1] = result.getString("BrandName");
-                data[cols][2] = result.getString("Price");
-                data[cols][3] = result.getString("Description");
-                data[cols][4] = result.getString("Quantity");
+                data[cols][0] = result.getString("Med_For");
+                data[cols][1] = result.getString("GenericName");
+                data[cols][2] = result.getString("BrandName");
+                data[cols][3] = result.getString("Price");
+                data[cols][4] = result.getString("Description");
+                data[cols][5] = result.getString("Quantity");
                 ++cols;
             }
             System.out.println(result);
@@ -83,7 +85,7 @@ public class CustomerOp {
 
     public Object[][] viewMedicineForCough() {
 
-        Object[][] data = new Object[10][5];
+        Object[][] data = new Object[10][6];
 
         String selectQuery;
 
@@ -95,11 +97,12 @@ public class CustomerOp {
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(selectQuery);
             while (result.next()) {
-                data[cols][0] = result.getString("GenericName");
-                data[cols][1] = result.getString("BrandName");
-                data[cols][2] = result.getString("Price");
-                data[cols][3] = result.getString("Description");
-                data[cols][4] = result.getString("Quantity");
+               data[cols][0] = result.getString("Med_For");
+                data[cols][1] = result.getString("GenericName");
+                data[cols][2] = result.getString("BrandName");
+                data[cols][3] = result.getString("Price");
+                data[cols][4] = result.getString("Description");
+                data[cols][5] = result.getString("Quantity");
                 ++cols;
             }
             System.out.println(result);
@@ -113,7 +116,7 @@ public class CustomerOp {
 
     public Object[][] viewMedicineForHeadache() {
 
-        Object[][] data = new Object[10][5];
+        Object[][] data = new Object[10][6];
 
         String selectQuery;
 
@@ -125,11 +128,12 @@ public class CustomerOp {
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(selectQuery);
             while (result.next()) {
-                data[cols][0] = result.getString("GenericName");
-                data[cols][1] = result.getString("BrandName");
-                data[cols][2] = result.getString("Price");
-                data[cols][3] = result.getString("Description");
-                data[cols][4] = result.getString("Quantity");
+                data[cols][0] = result.getString("Med_For");
+                data[cols][1] = result.getString("GenericName");
+                data[cols][2] = result.getString("BrandName");
+                data[cols][3] = result.getString("Price");
+                data[cols][4] = result.getString("Description");
+                data[cols][5] = result.getString("Quantity");
                 ++cols;
             }
             System.out.println(result);
