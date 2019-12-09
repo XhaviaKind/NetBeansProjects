@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -26,6 +28,7 @@ public class MyPurchasesHistory extends javax.swing.JFrame {
     DefaultTableModel tm;
     double totalAmount = 0;
     BuyMed bm = new BuyMed();
+    List<List> purch = new ArrayList();
 
     /**
      * Creates new form MyPurchasesHistory
@@ -39,35 +42,48 @@ public class MyPurchasesHistory extends javax.swing.JFrame {
     public void updateData() {
         int row = purchasehistoryTable.getRowCount();
 //        int col = purchasehistoryTable.getColumnCount();
-        try {
-            int quantity = 0;
-            String bName = null;
-            int purchQuantity = 0;
-            Connection conn = new CRUD().connectToDB();
-            for (int i = 0; i < row; i++) {
-                purchQuantity = Integer.parseInt(purchasehistoryTable.getValueAt(i, 3).toString());
-                String qty = "SELECT Quantity, BrandName FROM medicine WHERE BrandName = " + "\"" + (tm.getValueAt(i, 1).toString()) + "\"" + ";";
+
+        int quantity = 0;
+        String bName = null;
+        int purchQuantity = 0;
+        for (int i = 0; i < row; i++) {
+
+            String qty = "SELECT Quantity, BrandName FROM medicine WHERE BrandName = " + "\"" + (tm.getValueAt(i, 1).toString()) + "\"" + ";";
+            purchQuantity = Integer.parseInt(purchasehistoryTable.getValueAt(i, 3).toString());
+            try {
+                Connection conn = new CRUD().connectToDB();
                 Statement statement = conn.createStatement();
                 ResultSet resultSet = statement.executeQuery(qty);
-
+                List<String> list = new ArrayList();
                 while (resultSet.next()) {
-                    quantity = resultSet.getInt("Quantity");
-                    bName = resultSet.getString("BrandName");
-                    System.out.println("quantity : " + quantity);
+                    list.add(resultSet.getString("BrandName"));
+                    list.add(String.valueOf(resultSet.getInt("Quantity")));
+                    list.add(String.valueOf(purchQuantity));
                 }
+                purch.add(list);
+                System.out.println("quantity : " + quantity);
                 System.out.println("purchase Quantity : " + purchQuantity);
-
-                JOptionPane.showMessageDialog(rootPane, "Qunatity to be bought : " + (tm.getValueAt(i, 3)));
-            }
-            String updateMed = "UPDATE medicine SET Quantity = " + (quantity - purchQuantity)
-                    + " WHERE BrandName = " + "\"" + bName + "\"" + ";";
-            Statement statement1 = conn.createStatement();
-            statement1.executeUpdate(updateMed);
-            conn.close();
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
 //            System.out.println(ex.getMessage());
+            }
+            for (List l : purch) {
+                try {
+                    Connection connection = new CRUD().connectToDB();
+                    System.out.println(l);
+                    String updateMed = "UPDATE medicine SET Quantity = " + (Integer.parseInt(l.get(1).toString()) - (Integer.parseInt(l.get(2).toString())))
+                            + " WHERE BrandName = " + "\"" + l.get(0) + "\"" + ";";
+
+                    Statement statement1 = connection.createStatement();
+                    statement1.executeUpdate(updateMed);
+
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MyPurchasesHistory.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+//                JOptionPane.showMessageDialog(rootPane, "Qunatity to be bought : " + (tm.getValueAt(i, 3)));
         }
     }
 
@@ -85,7 +101,7 @@ public class MyPurchasesHistory extends javax.swing.JFrame {
             }
 
             totalAmountToPay.setText("Php " + String.valueOf(totalAmount));
-            updateData();
+
             connection.close();
         } catch (Exception e) {
             System.err.println("Got an exception!");
@@ -231,13 +247,14 @@ public class MyPurchasesHistory extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkoutBtnMouseClicked
+        updateData();
         try {
-            updateData();
+
             // TODO add your handling code here:
             String query = "DELETE FROM purchase_history";
             Connection conn = new CRUD().connectToDB();
             Statement statement = conn.createStatement();
-            JOptionPane.showMessageDialog(rootPane, "You're orders will be deleted after you have checked out");
+//            JOptionPane.showMessageDialog(rootPane, "You're orders will be deleted after you have checked out");
             statement.executeUpdate(query);
 
         } catch (SQLException ex) {

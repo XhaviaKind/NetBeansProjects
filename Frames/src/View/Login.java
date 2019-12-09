@@ -204,7 +204,7 @@ public class Login extends javax.swing.JFrame {
             connection.close(); // Close the connection to the database
         } catch (SQLException ex) {
             // This means that 
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
 
         if (user.equals(account_saved_Db) && pass.equals(passWord_saved_Db) && role_saved_db.equals("Customer")) {

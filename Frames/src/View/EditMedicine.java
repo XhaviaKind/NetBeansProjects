@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,6 +28,12 @@ public class EditMedicine extends javax.swing.JFrame {
 
     CRUD crud = new CRUD();
     DefaultTableModel tm = new DefaultTableModel();
+    String medfor;
+    String genName;
+    String bName;
+    String price;
+    String qty;
+    String desc;
 
     /**
      * Creates new form EditMedicine
@@ -143,22 +150,37 @@ public class EditMedicine extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void editMedicineTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMedicineTableMouseClicked
         int row = editMedicineTable.getSelectedRow();
 // =================================================== WALA PA NI ============ DILI PA MA UPDATE ANG NAA SA DATABASE ======================================================
-        String medfor = editMedicineTable.getValueAt(row, 0).toString();
-        String genName = editMedicineTable.getValueAt(row, 1).toString();
-        String bName = editMedicineTable.getValueAt(row, 2).toString();
-        String price = editMedicineTable.getValueAt(row, 3).toString();
-        String qty = editMedicineTable.getValueAt(row, 4).toString();
-        String desc = editMedicineTable.getValueAt(row, 5).toString();
+        medfor = editMedicineTable.getValueAt(row, 0).toString();
+        genName = editMedicineTable.getValueAt(row, 1).toString();
+        bName = editMedicineTable.getValueAt(row, 2).toString();
+        price = editMedicineTable.getValueAt(row, 3).toString();
+        qty = editMedicineTable.getValueAt(row, 4).toString();
+        desc = editMedicineTable.getValueAt(row, 5).toString();
+        edit();
+        
+    }//GEN-LAST:event_editMedicineTableMouseClicked
+
+    private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
+        // TODO add your handling code here:
+        PharmacistHomePage ph = new PharmacistHomePage();
+        this.setVisible(false);
+        ph.setVisible(true);
+    }//GEN-LAST:event_backBtnMouseClicked
+
+    public boolean edit() {
+        boolean edited = false;
+        
 //        CREATE A NEW JTEXTFIELD
         JTextField medforForm = new JTextField(20);
         JTextField genNameForm = new JTextField(20);
         JTextField bNameForm = new JTextField(20);
         JTextField priceForm = new JTextField(20);
         JTextField qtyForm = new JTextField(20);
-        JTextArea descForm = new JTextArea(20,100);
+        JTextArea descForm = new JTextArea(10, 10);
 //        SET VALUE FOR EVERY JTEXTFIELD
         medforForm.setText(medfor);
         genNameForm.setText(genName);
@@ -169,19 +191,19 @@ public class EditMedicine extends javax.swing.JFrame {
 //        INSTANCE OF THE POPUP TABLE TO EDIT
         Object[] obj = {
             "Medicine For : ", medforForm,
-            "Generic name : ",genNameForm,
+            "Generic name : ", genNameForm,
             "Brand name : ", bNameForm,
             "Price : ", priceForm,
             "Quantity : ", qtyForm,
             "Description : ", descForm
         };
+        String update = "UPDATE medicine SET Med_For = ?, GenericName = ? , BrandName = ?, Price = , Quantity = ?, Description = ? WHERE BrandName =" + "\"" + bName + "\"" + ";";
 //        POPUP TABLE TO EDIT
-        int edit = JOptionPane.showConfirmDialog(rootPane, obj, "Edit datas", JOptionPane.OK_CANCEL_OPTION);
-        
-        if(edit == JOptionPane.OK_OPTION) {
+        int opt = JOptionPane.showConfirmDialog(rootPane, obj, "Edit datas", JOptionPane.OK_CANCEL_OPTION);
+        Connection connection = new CRUD().connectToDB();
+        if (opt == 0) {
             try {
-                String update = "UPDATE medicine SET Med_For = ?, GenericName = ?, BrandName = ?, Price = ?, Quantity = ?, Description = ? WHERE BrandName =" + "\"" + bName + "\"" + ";";
-                Connection connection = crud.connectToDB();
+                System.out.println("dddd");
                 PreparedStatement psmt = connection.prepareStatement(update);
                 psmt.setString(1, medforForm.getText());
                 psmt.setString(2, genNameForm.getText());
@@ -189,19 +211,18 @@ public class EditMedicine extends javax.swing.JFrame {
                 psmt.setDouble(4, Double.parseDouble(priceForm.getText()));
                 psmt.setInt(5, Integer.parseInt(qtyForm.getText()));
                 psmt.setString(6, descForm.getText());
+                psmt.executeUpdate(update);
+                tm.setRowCount(0);
+                connection.close();
+                getAllData();
+                edited = true;
+
             } catch (SQLException ex) {
-                Logger.getLogger(EditMedicine.class.getName()).log(Level.SEVERE, null, ex);
+                edited = false;
             }
         }
-    }//GEN-LAST:event_editMedicineTableMouseClicked
-
-    private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
-        // TODO add your handling code here:
-        PharmacistHomePage ph = new PharmacistHomePage();
-        this.setVisible(false);
-        ph.setVisible(true);
-    }//GEN-LAST:event_backBtnMouseClicked
-
+        return edited;
+    }
     public void getAllData() {
         try {
             tm = (DefaultTableModel) editMedicineTable.getModel();

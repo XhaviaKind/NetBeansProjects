@@ -43,7 +43,7 @@ public class BuyMed extends javax.swing.JFrame {
     String descValue;
     String medFor;
     int qtyUpdate;
-    boolean chicken = false;
+//    boolean chicken = false;
     
 //    int qty = 0;
 //
@@ -468,20 +468,20 @@ public class BuyMed extends javax.swing.JFrame {
 
     }//GEN-LAST:event_medTableMouseClicked
 
-    public void updateData() {
-        try {
-            Connection conn = new CRUD().connectToDB();
-
-            String updateMed = "UPDATE medicine SET Quantity=" + qtyUpdate
-                    + " WHERE GenericName= " + "\"" + genValue + "\"" + ";";
-            Statement statement = conn.createStatement();
-            statement.executeUpdate(updateMed);
-            conn.close();
-            JOptionPane.showMessageDialog(rootPane, qtyUpdate);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
+//    public void updateData() {
+//        try {
+//            Connection conn = new CRUD().connectToDB();
+//
+//            String updateMed = "UPDATE medicine SET Quantity=" + qtyUpdate
+//                    + " WHERE GenericName= " + "\"" + genValue + "\"" + ";";
+//            Statement statement = conn.createStatement();
+//            statement.executeUpdate(updateMed);
+//            conn.close();
+//            JOptionPane.showMessageDialog(rootPane, qtyUpdate);
+//        } catch (SQLException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//    }
 
     private void addToCartBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addToCartBtnMouseClicked
         // TODO add your handling code here:
@@ -501,9 +501,9 @@ public class BuyMed extends javax.swing.JFrame {
 //                    if (qtyUpdate > 0 || Integer.parseInt(inputQty.getText()) <= availableQtyValue) {
                         stmt.executeUpdate(query);
                         JOptionPane.showMessageDialog(rootPane, "Added to cart");
-                        if (chicken == true) {
-                            updateData();
-                        }
+//                        if (chicken == true) {
+//                            updateData();
+//                        }
 //                    } else {
 //                        JOptionPane.showMessageDialog(rootPane, "Not Enough supply", "Error", JOptionPane.ERROR_MESSAGE);
 //                    }
