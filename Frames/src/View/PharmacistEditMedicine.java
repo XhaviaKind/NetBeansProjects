@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.Pharmacist;
+import Controller.PharmacistTransaction;
 import Model.CRUD;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -26,9 +27,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PharmacistEditMedicine extends javax.swing.JFrame {
 
+//    public  JTable getEditMedicineTable() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+
     CRUD crud = new CRUD();
     DefaultTableModel tm = new DefaultTableModel();
-    Pharmacist pharmacist = new Pharmacist();
+    PharmacistTransaction pharmacist = new PharmacistTransaction();
 
     static String medfor;
     static String genName;
@@ -92,6 +97,12 @@ public class PharmacistEditMedicine extends javax.swing.JFrame {
     public JTextArea getDescForm() {
         return descForm;
     }
+
+    public JTable getEditMedicineTable() {
+        return editMedicineTable;
+    }
+    
+    
 
     /**
      * Creates new form EditMedicine

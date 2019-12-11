@@ -51,7 +51,7 @@ public class CustomerBuyMed extends javax.swing.JFrame {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-        
+
         medTable.setModel(ct.tableAllergyMed());
     }
 
@@ -436,15 +436,15 @@ public class CustomerBuyMed extends javax.swing.JFrame {
 
     private void medTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medTableMouseClicked
         // TODO add your handling code here:
-        int row = medTable.getSelectedRow();
-        
+        int row = medTable.getSelectedRow(); // GET THE ROW THAT YOU HAVE SELECTED
+//      SET THE VALUE OF EACH ROW
         medforVal.setText(medTable.getValueAt(row, 0).toString());
         genericNameVal.setText(medTable.getValueAt(row, 1).toString());
         brandnameVal.setText(medTable.getValueAt(row, 2).toString());
         priceVal.setText(medTable.getValueAt(row, 3).toString());
         descVal.setText(medTable.getValueAt(row, 4).toString());
         availableQVal.setText(medTable.getValueAt(row, 5).toString());
-
+//      GET THE VALUE OF EACH ROW
         medforValue = medforVal.getText();
         genValue = genericNameVal.getText();
         brandValue = brandnameVal.getText();
@@ -454,53 +454,38 @@ public class CustomerBuyMed extends javax.swing.JFrame {
 
     }//GEN-LAST:event_medTableMouseClicked
 
-//    public void updateData() {
-//        try {
-//            Connection conn = new CRUD().connectToDB();
-//
-//            String updateMed = "UPDATE medicine SET Quantity=" + qtyUpdate
-//                    + " WHERE GenericName= " + "\"" + genValue + "\"" + ";";
-//            Statement statement = conn.createStatement();
-//            statement.executeUpdate(updateMed);
-//            conn.close();
-//            JOptionPane.showMessageDialog(rootPane, qtyUpdate);
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//    }
-
     private void addToCartBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addToCartBtnMouseClicked
         // TODO add your handling code here:
-        if (!availableQVal.equals("")) {
-
-            if (availableQtyValue >= (Integer.parseInt(inputQty.getText()))) { // if quantity available is lesser than the user quantity input
+        if (!inputQty.getText().equals("")) { // CHECK IF THE VALUE OF THE USER INPUT IS NOT NULL
+            if ((availableQtyValue >= (Integer.parseInt(inputQty.getText()))) && availableQtyValue != 0) { // if quantity available is lesser than the user quantity input
                 qtyUpdate = availableQtyValue - Integer.parseInt(inputQty.getText()); // update the quantity to (availble quanty - user quantity input)
 //      
                 try {
                     Connection conn = new CRUD().connectToDB();
-                    double totalAmount = Double.parseDouble(inputQty.getText()) * priceValue;
+                    double totalAmount = Double.parseDouble(inputQty.getText()) * priceValue; // to be able to multiply the price and quantity, make the quantity DOUBLE type
                     String query = "INSERT INTO purchase_history (GenericName,BrandName,Price,Quantity,Description,Total_Amount)"
                             + "VALUES('" + genValue + "','" + brandValue + "','" + priceValue + "','" + (Integer.parseInt(inputQty.getText()))
                             + "','" + descValue + "','" + totalAmount + "')";
-                    Statement stmt = conn.createStatement();
-
-                        stmt.executeUpdate(query);
-                        JOptionPane.showMessageDialog(rootPane, "Added to cart");
-
+                    Statement stmt = conn.createStatement(); // CREATE A STATEMENT FOR THE QUERY TO BE EXECUTED
+                    stmt.executeUpdate(query); // EXECUTE THE QUERY
+                    JOptionPane.showMessageDialog(rootPane, "Added to cart");
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println(ex.getMessage());
                 }
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Sorry, We do not have enough supply", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Something went wrong", "Error", JOptionPane.ERROR_MESSAGE);
             }
+        } //    }
+        else {
+            JOptionPane.showMessageDialog(rootPane, "Nothing to be added", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_addToCartBtnMouseClicked
 
     private void viewBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewBtnMouseClicked
         // TODO add your handling code here:
         CustomerPurchasesHistory mph = new CustomerPurchasesHistory();
-        mph.viewOrders();
+        mph.viewOrders(); 
         mph.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_viewBtnMouseClicked
@@ -519,16 +504,24 @@ public class CustomerBuyMed extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerBuyMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerBuyMed.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerBuyMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerBuyMed.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerBuyMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerBuyMed.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerBuyMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerBuyMed.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

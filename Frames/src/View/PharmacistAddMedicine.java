@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-import Controller.Pharmacist;
+import Controller.PharmacistTransaction;
 import Model.CRUD;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class PharmacistAddMedicine extends javax.swing.JFrame {
 
     CRUD crud = new CRUD();
-    Pharmacist pharmacist = new Pharmacist();
+    PharmacistTransaction pharmacist = new PharmacistTransaction();
     
     static String medFor;
     static String genName;

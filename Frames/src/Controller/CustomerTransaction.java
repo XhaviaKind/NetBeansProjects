@@ -77,14 +77,12 @@ public class CustomerTransaction {
         };
         return tableMedCough;
     }
-    
+//    THIS WILL BE CALLED IF THE CUSTOMER WILL CHECK OUT THE ITEMS IN CUSTOMERPURCHASEHISTORY
     public void updateData(DefaultTableModel purchaseTable) {
         int row = purchaseTable.getRowCount();
-
         int quantity = 0;
         int purchQuantity = 0;
         for (int i = 0; i < row; i++) {
-
             String qty = "SELECT Quantity, BrandName FROM medicine WHERE BrandName = " + "\"" + (purchaseTable.getValueAt(i, 1).toString()) + "\"" + ";";
             purchQuantity = Integer.parseInt(purchaseTable.getValueAt(i, 3).toString());
             try {

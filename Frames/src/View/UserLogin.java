@@ -16,8 +16,6 @@ import java.sql.SQLException;
 //import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,7 +30,7 @@ public class UserLogin extends javax.swing.JFrame {
     String account_saved_Db = null;
     String passWord_saved_Db = null;
     String role_saved_db = null;
-    static String user ;
+    static String user;
     static String pass;
     CustomerHomePage tp = new CustomerHomePage();
 
@@ -55,24 +53,24 @@ public class UserLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        loginL = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         loginbtn = new javax.swing.JButton();
         signInBtn = new javax.swing.JButton();
-        input_login_password = new javax.swing.JPasswordField();
-        input_login_uname = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        inputPass = new javax.swing.JPasswordField();
+        inputUname = new javax.swing.JTextField();
+        passL = new javax.swing.JLabel();
+        unameL = new javax.swing.JLabel();
+        askAccL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel3.setFont(new java.awt.Font("Monotype Corsiva", 1, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 153, 153));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Login");
+        loginL.setFont(new java.awt.Font("Monotype Corsiva", 1, 48)); // NOI18N
+        loginL.setForeground(new java.awt.Color(255, 153, 153));
+        loginL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loginL.setText("Login");
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 153));
 
@@ -90,15 +88,15 @@ public class UserLogin extends javax.swing.JFrame {
             }
         });
 
-        input_login_password.setText("password");
+        inputPass.setText("password");
 
-        input_login_uname.setText("username");
+        inputUname.setText("username");
 
-        jLabel2.setText("Password : ");
+        passL.setText("Password : ");
 
-        jLabel1.setText("Username : ");
+        unameL.setText("Username : ");
 
-        jLabel4.setText("Don't have an account yet ?");
+        askAccL.setText("Don't have an account yet ?");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -118,15 +116,15 @@ public class UserLogin extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(142, 142, 142)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(passL)
+                            .addComponent(unameL))
                         .addGap(49, 49, 49)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(input_login_password, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(input_login_uname, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(inputPass, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputUname, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(163, 163, 163)
-                        .addComponent(jLabel4)))
+                        .addComponent(askAccL)))
                 .addGap(0, 99, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -134,16 +132,16 @@ public class UserLogin extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(input_login_uname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(inputUname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(unameL))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(input_login_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(inputPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passL))
                 .addGap(37, 37, 37)
                 .addComponent(loginbtn)
                 .addGap(37, 37, 37)
-                .addComponent(jLabel4)
+                .addComponent(askAccL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(signInBtn)
                 .addContainerGap(61, Short.MAX_VALUE))
@@ -157,14 +155,14 @@ public class UserLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(loginL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                .addComponent(loginL, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -186,9 +184,9 @@ public class UserLogin extends javax.swing.JFrame {
 
     private void loginbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtnMouseClicked
         // TODO add your handling code here:
-        user = input_login_uname.getText(); // This will get the user input in the username text field
-        pass = input_login_password.getText(); // This will get the user input in the password text field
-        encryptPassword(pass); // This will encrypt the password that was entered by the user but not used for now :)
+        user = inputUname.getText(); // This will get the user input in the username text field
+        pass = inputPass.getText(); // This will get the user input in the password text field
+//        encryptPassword(pass); // This will encrypt the password that was entered by the user but not used for now :)
 
         try {
 
@@ -206,20 +204,20 @@ public class UserLogin extends javax.swing.JFrame {
             // This means that 
             System.out.println(ex.getMessage());
         }
-
+// CHECK IF THE VALUE OF THE Username, Password INPUT AND THE IS EQUAL TO THE Username, Password TAKEN FROM THE DATA BASE AND THE ROLE IS Customer
         if (user.equals(account_saved_Db) && pass.equals(passWord_saved_Db) && role_saved_db.equals("Customer")) {
             JOptionPane.showMessageDialog(rootPane, "Customer");
             tp.setUsername(user);
             this.setVisible(false);
             tp.setVisible(true);
-        } else if (user.equals(account_saved_Db) && pass.equals(passWord_saved_Db) && role_saved_db.equals("Pharmacist")){
+        } // CHECK IF THE VALUE OF THE Username, Password INPUT AND THE IS EQUAL TO THE Username, Password TAKEN FROM THE DATA BASE AND THE ROLE IS Pharmacist 
+        else if (user.equals(account_saved_Db) && pass.equals(passWord_saved_Db) && role_saved_db.equals("Pharmacist")) {
             JOptionPane.showMessageDialog(rootPane, "Pharmacist");
             this.setVisible(false);
             PharmacistHomePage ph = new PharmacistHomePage();
             ph.setVisible(true);
-        } 
-        else {
-            JOptionPane.showMessageDialog(rootPane, "Di Lagi Ka Sud?\n" + "username : " + account_saved_Db + " = " + user + "\npassword : " + passWord_saved_Db + " = " + pass , "Error", JOptionPane.ERROR_MESSAGE);
+        } else { // ELSE IT WILL DISPLAY ERROR
+            JOptionPane.showMessageDialog(rootPane, "Di Lagi Ka Sud?\n" + "username : " + account_saved_Db + " = " + user + "\npassword : " + passWord_saved_Db + " = " + pass, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_loginbtnMouseClicked
 
@@ -231,26 +229,25 @@ public class UserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_signInBtnMouseClicked
 
     // This is the method in encrypting the user input password
-    private String encryptPassword(String passw) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-
-            md.update(passw.getBytes());
-
-            byte[] bytes = md.digest();
-
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            generatedPass = sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
-            ex.printStackTrace();
-        }
-        return generatedPass;
-    }
-
+//    private String encryptPassword(String passw) {
+//        try {
+//            MessageDigest md = MessageDigest.getInstance("MD5");
+//
+//            md.update(passw.getBytes());
+//
+//            byte[] bytes = md.digest();
+//
+//            StringBuilder sb = new StringBuilder();
+//
+//            for (int i = 0; i < bytes.length; i++) {
+//                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+//            }
+//            generatedPass = sb.toString();
+//        } catch (NoSuchAlgorithmException ex) {
+//            ex.printStackTrace();
+//        }
+//        return generatedPass;
+//    }
     /**
      * @param args the command line arguments
      */
@@ -288,15 +285,15 @@ public class UserLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField input_login_password;
-    private javax.swing.JTextField input_login_uname;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel askAccL;
+    private javax.swing.JPasswordField inputPass;
+    private javax.swing.JTextField inputUname;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel loginL;
     private javax.swing.JButton loginbtn;
+    private javax.swing.JLabel passL;
     private javax.swing.JButton signInBtn;
+    private javax.swing.JLabel unameL;
     // End of variables declaration//GEN-END:variables
 }

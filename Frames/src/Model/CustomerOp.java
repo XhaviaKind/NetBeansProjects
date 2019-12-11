@@ -23,18 +23,20 @@ public class CustomerOp {
     Statement stmt = null;
 
     public Object[][] viewMedicineForAllergy() {
+//                            Object [row] [culomn]
         Object[][] data = new Object[10][6];
-        
+
         String selectQuery;
 
         selectQuery = "SELECT * from `medicine` WHERE Med_For = 'Allergy'";
         try {
-            Class.forName("com.mysql.jdbc.Driver");  
+            Class.forName("com.mysql.jdbc.Driver");
             int cols = 0;
             conn = DriverManager.getConnection("jdbc:mysql://localhost/butanon", "root", "");
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(selectQuery);
             while (result.next()) {
+//                SET THE VALUE OF ROW FROM THE CULOMN WITH THE VALUE TAKEN FROM THE DATABASE
                 data[cols][0] = result.getString("Med_For");
                 data[cols][1] = result.getString("GenericName");
                 data[cols][2] = result.getString("BrandName");
@@ -53,19 +55,19 @@ public class CustomerOp {
     }
 
     public Object[][] viewMedicineForBodyPain() {
-
+//                            Object [row] [culomn]
         Object[][] data = new Object[10][6];
 
         String selectQuery;
-
         selectQuery = "SELECT * from `medicine` WHERE Med_For = 'Body Pain'";
         try {
             int cols = 0;
-            Class.forName("com.mysql.jdbc.Driver");  
+            Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/butanon", "root", "");
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(selectQuery);
             while (result.next()) {
+//                SET THE VALUE OF ROW FROM THE CULOMN WITH THE VALUE TAKEN FROM THE DATABASE
                 data[cols][0] = result.getString("Med_For");
                 data[cols][1] = result.getString("GenericName");
                 data[cols][2] = result.getString("BrandName");
@@ -85,6 +87,7 @@ public class CustomerOp {
 
     public Object[][] viewMedicineForCough() {
 
+//                            Object [row] [culomn]
         Object[][] data = new Object[10][6];
 
         String selectQuery;
@@ -92,12 +95,13 @@ public class CustomerOp {
         selectQuery = "SELECT * from `medicine` WHERE Med_For = 'Cough'";
         try {
             int cols = 0;
-            Class.forName("com.mysql.jdbc.Driver");  
+            Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/butanon", "root", "");
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(selectQuery);
             while (result.next()) {
-               data[cols][0] = result.getString("Med_For");
+//                SET THE VALUE OF ROW FROM THE CULOMN WITH THE VALUE TAKEN FROM THE DATABASE
+                data[cols][0] = result.getString("Med_For");
                 data[cols][1] = result.getString("GenericName");
                 data[cols][2] = result.getString("BrandName");
                 data[cols][3] = result.getString("Price");
@@ -116,6 +120,7 @@ public class CustomerOp {
 
     public Object[][] viewMedicineForHeadache() {
 
+//                            Object [row] [culomn]
         Object[][] data = new Object[10][6];
 
         String selectQuery;
@@ -123,11 +128,12 @@ public class CustomerOp {
         selectQuery = "SELECT * from `medicine` WHERE Med_For = 'Headache'";
         try {
             int cols = 0;
-            Class.forName("com.mysql.jdbc.Driver");  
+            Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/butanon", "root", "");
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(selectQuery);
             while (result.next()) {
+//                SET THE VALUE OF ROW FROM THE CULOMN WITH THE VALUE TAKEN FROM THE DATABASE
                 data[cols][0] = result.getString("Med_For");
                 data[cols][1] = result.getString("GenericName");
                 data[cols][2] = result.getString("BrandName");
