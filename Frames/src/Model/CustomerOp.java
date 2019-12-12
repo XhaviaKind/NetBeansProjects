@@ -6,9 +6,12 @@
 package Model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,23 +23,14 @@ public class CustomerOp {
     Statement stmt = null;
 
     public Object[][] viewMedicineForAllergy() {
-<<<<<<< HEAD
-
-        Connection conn = null;
-        Statement stmt = null;
-=======
 //                            Object [row] [culomn]
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
         Object[][] data = new Object[10][6];
 
         String selectQuery;
 
         selectQuery = "SELECT * from `medicine` WHERE Med_For = 'Allergy'";
         try {
-<<<<<<< HEAD
-=======
             Class.forName("com.mysql.jdbc.Driver");
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
             int cols = 0;
             conn = new CRUD().connectToDB();
             stmt = conn.createStatement();
@@ -55,31 +49,22 @@ public class CustomerOp {
             System.out.println(result);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CustomerOp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return data;
     }
 
     public Object[][] viewMedicineForBodyPain() {
-<<<<<<< HEAD
-
-        Connection conn = null;
-        Statement stmt = null;
-
-=======
 //                            Object [row] [culomn]
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
         Object[][] data = new Object[10][6];
 
         String selectQuery;
         selectQuery = "SELECT * from `medicine` WHERE Med_For = 'Body Pain'";
         try {
             int cols = 0;
-<<<<<<< HEAD
-            conn = new CRUD().connectToDB();
-=======
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/butanon", "root", "");
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(selectQuery);
             while (result.next()) {
@@ -96,19 +81,15 @@ public class CustomerOp {
             System.out.println(result);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CustomerOp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return data;
     }
 
     public Object[][] viewMedicineForCough() {
 
-<<<<<<< HEAD
-        Connection conn = null;
-        Statement stmt = null;
-
-=======
 //                            Object [row] [culomn]
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
         Object[][] data = new Object[10][6];
 
         String selectQuery;
@@ -116,19 +97,12 @@ public class CustomerOp {
         selectQuery = "SELECT * from `medicine` WHERE Med_For = 'Cough'";
         try {
             int cols = 0;
-<<<<<<< HEAD
-            conn = new CRUD().connectToDB();
-            stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery(selectQuery);
-            while (result.next()) {
-=======
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/butanon", "root", "");
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(selectQuery);
             while (result.next()) {
 //                SET THE VALUE OF ROW FROM THE CULOMN WITH THE VALUE TAKEN FROM THE DATABASE
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
                 data[cols][0] = result.getString("Med_For");
                 data[cols][1] = result.getString("GenericName");
                 data[cols][2] = result.getString("BrandName");
@@ -141,19 +115,15 @@ public class CustomerOp {
             System.out.println(result);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CustomerOp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return data;
     }
 
     public Object[][] viewMedicineForHeadache() {
 
-<<<<<<< HEAD
-        Connection conn = null;
-        Statement stmt = null;
-
-=======
 //                            Object [row] [culomn]
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
         Object[][] data = new Object[10][6];
 
         String selectQuery;
@@ -161,12 +131,8 @@ public class CustomerOp {
         selectQuery = "SELECT * from `medicine` WHERE Med_For = 'Headache'";
         try {
             int cols = 0;
-<<<<<<< HEAD
-            conn = new CRUD().connectToDB();
-=======
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/butanon", "root", "");
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(selectQuery);
             while (result.next()) {
@@ -183,6 +149,8 @@ public class CustomerOp {
             System.out.println(result);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CustomerOp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return data;
     }

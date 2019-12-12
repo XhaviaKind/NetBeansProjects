@@ -5,10 +5,6 @@
  */
 package View;
 import Controller.PharmacistTransaction;
-<<<<<<< HEAD
-=======
-import Model.CRUD;
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -19,10 +15,6 @@ import javax.swing.JOptionPane;
  */
 public class PharmacistAddMedicine extends javax.swing.JFrame {
 
-<<<<<<< HEAD
-=======
-    CRUD crud = new CRUD();
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
     PharmacistTransaction pharmacist = new PharmacistTransaction();
     
     static String medFor;

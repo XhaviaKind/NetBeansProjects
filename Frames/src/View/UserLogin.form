@@ -47,15 +47,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel2" alignment="1" max="32767" attributes="0"/>
-<<<<<<< HEAD
-                      <Component id="jLabel3" alignment="1" max="32767" attributes="0"/>
+                      <Component id="loginL" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel5" min="-2" pref="216" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-=======
-                      <Component id="loginL" alignment="1" max="32767" attributes="0"/>
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -65,15 +61,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-<<<<<<< HEAD
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="8" max="32767" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="loginL" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-=======
-                  <Component id="loginL" pref="82" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

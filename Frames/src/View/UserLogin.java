@@ -57,36 +57,21 @@ public class UserLogin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         loginbtn = new javax.swing.JButton();
         signInBtn = new javax.swing.JButton();
-<<<<<<< HEAD
-        input_login_password = new javax.swing.JPasswordField();
-        input_login_uname = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-=======
         inputPass = new javax.swing.JPasswordField();
         inputUname = new javax.swing.JTextField();
         passL = new javax.swing.JLabel();
         unameL = new javax.swing.JLabel();
         askAccL = new javax.swing.JLabel();
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-<<<<<<< HEAD
-        jLabel3.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 153, 153));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Login");
-=======
-        loginL.setFont(new java.awt.Font("Monotype Corsiva", 1, 48)); // NOI18N
+        loginL.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         loginL.setForeground(new java.awt.Color(255, 153, 153));
         loginL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loginL.setText("Login");
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 153));
 
@@ -175,29 +160,20 @@ public class UserLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-<<<<<<< HEAD
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loginL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
-=======
-                    .addComponent(loginL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-<<<<<<< HEAD
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(loginL)
                 .addGap(18, 18, 18)
-=======
-                .addComponent(loginL, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -319,19 +295,10 @@ public class UserLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
-    private javax.swing.JPasswordField input_login_password;
-    private javax.swing.JTextField input_login_uname;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-=======
     private javax.swing.JLabel askAccL;
     private javax.swing.JPasswordField inputPass;
     private javax.swing.JTextField inputUname;
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel loginL;

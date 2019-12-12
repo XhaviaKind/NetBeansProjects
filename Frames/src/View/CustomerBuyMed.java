@@ -416,12 +416,6 @@ public class CustomerBuyMed extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBtnMouseClicked
-        // TODO add your handling code here:
-        this.setVisible(false);
-        tp.setVisible(true);
-    }//GEN-LAST:event_cancelBtnMouseClicked
-
     private void allergyBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allergyBtnMouseClicked
         // TODO add your handling code here:
 //        ct.purchaseAllergyMed(genericName, brandName, quantity);
@@ -503,6 +497,12 @@ public class CustomerBuyMed extends JFrame {
         mph.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_viewBtnMouseClicked
+
+    private void cancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBtnMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        tp.setVisible(true);
+    }//GEN-LAST:event_cancelBtnMouseClicked
 
     /**
      * @param args the command line arguments

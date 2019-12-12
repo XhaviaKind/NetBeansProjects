@@ -17,11 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-<<<<<<< HEAD:Frames/src/Controller/PharmacistTransaction.java
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-=======
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d:Frames/src/Controller/PharmacistTransaction.java
 
 /**
  *
@@ -37,7 +34,6 @@ public class PharmacistTransaction {
     static String description;
 
     CRUD crud = new CRUD();
-<<<<<<< HEAD:Frames/src/Controller/PharmacistTransaction.java
 
     JTable purchaseTable;
 
@@ -91,10 +87,6 @@ public class PharmacistTransaction {
         return tableMedCough;
     }
 
-=======
-    
-    
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d:Frames/src/Controller/PharmacistTransaction.java
     public void addMedicine() {
         medFor = PharmacistAddMedicine.getMedFor();
         genName = PharmacistAddMedicine.getGenName();
@@ -132,11 +124,5 @@ public class PharmacistTransaction {
             System.out.println(ex.getMessage());
         }
     }
-<<<<<<< HEAD:Frames/src/Controller/PharmacistTransaction.java
-=======
-   
-
-    
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d:Frames/src/Controller/PharmacistTransaction.java
 
 }

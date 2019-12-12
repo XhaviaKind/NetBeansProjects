@@ -88,12 +88,8 @@ public class CustomerPurchasesHistory extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         totalAmountToPay = new javax.swing.JTextField();
         checkoutBtn = new javax.swing.JButton();
-<<<<<<< HEAD
-        jButton2 = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-=======
-        cancelBtn = new javax.swing.JButton();
->>>>>>> 6844e25c058211af9288e0820bfdd8c7e55c196d
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,10 +130,10 @@ public class CustomerPurchasesHistory extends javax.swing.JFrame {
             }
         });
 
-        cancelBtn.setText("Cancel");
-        cancelBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        backBtn.setText("Back");
+        backBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelBtnMouseClicked(evt);
+                backBtnMouseClicked(evt);
             }
         });
 
@@ -156,9 +152,13 @@ public class CustomerPurchasesHistory extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(checkoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(totalAmountToPay, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(totalAmountToPay, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(backBtn)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -169,10 +169,11 @@ public class CustomerPurchasesHistory extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(totalAmountToPay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelBtn))
+                    .addComponent(totalAmountToPay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(checkoutBtn)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkoutBtn)
+                    .addComponent(backBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -239,15 +240,16 @@ public class CustomerPurchasesHistory extends javax.swing.JFrame {
         viewOrders();
     }//GEN-LAST:event_checkoutBtnMouseClicked
 
-    private void cancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBtnMouseClicked
-        // TODO add your handling code here:
-        new CustomerBuyMed().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_cancelBtnMouseClicked
-
     private void purchasehistoryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchasehistoryTableMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_purchasehistoryTableMouseClicked
+
+    private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
+        // TODO add your handling code here:
+        CustomerBuyMed cbm = new CustomerBuyMed();
+        this.setVisible(false);
+        cbm.setVisible(true);
+    }//GEN-LAST:event_backBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -286,7 +288,7 @@ public class CustomerPurchasesHistory extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancelBtn;
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton checkoutBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
