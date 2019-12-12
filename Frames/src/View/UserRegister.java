@@ -8,8 +8,6 @@ package View;
 import Model.CRUD;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,11 +38,12 @@ public class UserRegister extends javax.swing.JFrame {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-    
+
+//        ADD THE RADIO BUTTON TO A GROUP SO IT WILL ONLY ALLOW ONE BUTTON TO BE CLICKED
         ButtonGroup group = new ButtonGroup();
         group.add(customerRadioBtn);
         group.add(pharmacistRadioBtn);
-   
+
     }
 
     /**
@@ -258,35 +257,35 @@ public class UserRegister extends javax.swing.JFrame {
         lastname = lname.getText();
         username = uname.getText();
         pass = password.getText();
-        encryptPassword(pass);
+//        encryptPassword(pass);
+        /* IF USER INPUT IS NOT EMPTY*/
         if (firstname.length() > 0 && lastname.length() > 0 && username.length() > 0 && pass.length() > 0) {
             try {
-//                String query = "INSERT INTO users (FirstName,LastName,Username,Password)" + "VALUES('" + firstname + "','"
-//                        + lastname + "','" + username + "','" + generatedPass + "')";
                 String query = "INSERT INTO users (FirstName,LastName,Username,Password,Role)" + "VALUES('" + firstname + "','"
                         + lastname + "','" + username + "','" + pass + "','" + role + "')";
                 String accountQuery = "SELECT Username FROM users WHERE Username = " + "\"" + username + "\"" + ";";
                 String account = null;
-                Connection connection = crud.connectToDB();
-                ResultSet rsAcc = crud.getData(accountQuery);
+                Connection connection = crud.connectToDB();  // CONNECT TO DATABASE
+                ResultSet rsAcc = crud.getData(accountQuery); // GET THE DATA FROM THE DATABASE 
                 while (rsAcc.next()) {
                     account = rsAcc.getString("Username");
                 }
+                /* THIS WILL CHECK IF THE VALUE OF THE USERNAME THAT WAS TAKEN FROM THE DATABASE IS NOT EQUAL TO THE USER INPUT THEN SAVE TO DATABASE */
                 if (!username.equals(account)) {
-                    crud.addData(query);
+                    crud.addData(query); // ADD THE DATA TO THE DATABASES
                     JOptionPane.showMessageDialog(rootPane, "Added");
                     this.setVisible(false);
                     UserLogin login = new UserLogin();
                     login.setVisible(true);
-                }else {
-                    JOptionPane.showMessageDialog(rootPane, "Username already exist!");
+                } /* DISPLAY ERROR */ else {
+                    JOptionPane.showMessageDialog(rootPane, "Username already exist!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 connection.close();
             } catch (SQLException ex) {
                 Logger.getLogger(UserRegister.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        } else {
+        } else { /* IF USER INPUT IS EMPTY THEN DISPLAY ERROR*/
             JOptionPane.showMessageDialog(null, "Something is wrong! Please check your input", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_submitbtnMouseClicked
@@ -308,26 +307,22 @@ public class UserRegister extends javax.swing.JFrame {
         role = "Pharmacist";
     }//GEN-LAST:event_pharmacistRadioBtnMouseClicked
 
-    private String encryptPassword(String passw) {
-
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-
-            md.update(passw.getBytes());
-
-            byte[] bytes = md.digest();
-
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            generatedPass = sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
-            ex.printStackTrace();
-        }
-        return generatedPass;
-    }
+//    private String encryptPassword(String passw) {
+//
+//        try {
+//            MessageDigest md = MessageDigest.getInstance("MD5");
+//            md.update(passw.getBytes());
+//            byte[] bytes = md.digest();
+//            StringBuilder sb = new StringBuilder();
+//            for (int i = 0; i < bytes.length; i++) {
+//                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+//            }
+//            generatedPass = sb.toString();
+//        } catch (NoSuchAlgorithmException ex) {
+//            ex.printStackTrace();
+//        }
+//        return generatedPass;
+//    }
 
     /**
      * @param args the command line arguments
