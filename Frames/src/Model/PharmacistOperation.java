@@ -12,12 +12,11 @@ import java.sql.Statement;
 
 /**
  *
- * @author but-anonju_sd2022
+ * @author 2ndyrGroupB
  */
-public class CustomerOp {
+public class PharmacistOperation {
 
-    Connection conn = null;
-    Statement stmt = null;
+  
 
     public Object[][] viewMedicineForAllergy() {
 
@@ -146,4 +145,5 @@ public class CustomerOp {
         return data;
     }
 
+    
 }

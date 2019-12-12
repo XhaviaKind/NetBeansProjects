@@ -6,22 +6,25 @@
 package Controller;
 
 import Model.CRUD;
+import Model.CustomerOp;
 import View.PharmacistAddMedicine;
-import View.PharmacistEditMedicine;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author but-anonju_sd2022
  */
-public class Pharmacist {
+public class PharmacistTransaction {
 
     static String medFor;
     static String genName;
@@ -31,6 +34,58 @@ public class Pharmacist {
     static String description;
 
     CRUD crud = new CRUD();
+
+    JTable purchaseTable;
+
+    List<List> purch = new ArrayList();
+
+    String[] col = {"Med_For", "Generic Name", "Brand Name", "Price", "Description", "Quantity"};
+
+    CustomerOp cOp = new CustomerOp();
+
+    public DefaultTableModel tableAllergyMed() {
+        Object[][] medForCough = cOp.viewMedicineForAllergy();
+        DefaultTableModel tableMedCough = new DefaultTableModel(medForCough, col) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        return tableMedCough;
+    }
+
+    public DefaultTableModel tableBodyPainMed() {
+        Object[][] medForCough = cOp.viewMedicineForBodyPain();
+        DefaultTableModel tableMedCough = new DefaultTableModel(medForCough, col) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        return tableMedCough;
+    }
+
+    public DefaultTableModel tableCoughMed() {
+        Object[][] medForCough = cOp.viewMedicineForCough();
+        DefaultTableModel tableMedCough = new DefaultTableModel(medForCough, col) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        return tableMedCough;
+    }
+
+    public DefaultTableModel tableHeadacheMed() {
+        Object[][] medForCough = cOp.viewMedicineForHeadache();
+        DefaultTableModel tableMedCough = new DefaultTableModel(medForCough, col) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        return tableMedCough;
+    }
 
     public void addMedicine() {
         medFor = PharmacistAddMedicine.getMedFor();
@@ -69,48 +124,5 @@ public class Pharmacist {
             System.out.println(ex.getMessage());
         }
     }
-//    String[] col = {"Med_For", "Generic Name", "Brand Name", "Price", "Description", "Quantity"};
-//
-//    public DefaultTableModel getAllData() {
-//        Object[][] data = setTable();
-//        for (Object[] dta: data) {
-//            for(Object d: dta) {
-//                System.out.println(d);
-//            }
-//        }
-//        DefaultTableModel table = new DefaultTableModel(setTable(), col) {
-//            @Override
-//            public boolean isCellEditable(int row, int column) {
-//                return false;
-//            }
-//        };
-//
-//        return table;
-//    }
-//
-//    public Object[][] setTable() {
-//        Object[][] data = new Object[15][6];
-//        try {
-//            // TODO add your handling code here:
-//            String query = "SELECT * FROM medicine";
-//            Connection connection = crud.connectToDB();
-//            ResultSet rs = crud.getData(query);
-//            int count = 0;
-//            while (rs.next()) {
-//                data[count][0] = rs.getString(2);
-//                data[count][1] = rs.getString(3);
-//                data[count][2] = rs.getString(4);
-//                data[count][3] = rs.getString(5);
-//                data[count][4] = rs.getString(6);
-//                data[count][5] = rs.getString(7);
-//                count++;
-//            }
-//            connection.close();
-//        } catch (Exception ex) {
-//            Logger.getLogger(PharmacistEditMedicine.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return data;
-//    }
-    
 
 }

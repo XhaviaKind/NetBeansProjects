@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -29,7 +30,7 @@ import javax.swing.JOptionPane;
  *
  * @author but-anonju_sd2022
  */
-public class CustomerBuyMed extends javax.swing.JFrame {
+public class CustomerBuyMed extends JFrame {
 
     List purchase = new ArrayList();
     CustomerTransaction ct = new CustomerTransaction();
@@ -96,6 +97,7 @@ public class CustomerBuyMed extends javax.swing.JFrame {
         addToCartBtn = new javax.swing.JButton();
         buyLabel = new javax.swing.JLabel();
         cancelBtn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -348,7 +350,7 @@ public class CustomerBuyMed extends javax.swing.JFrame {
         );
 
         buyLabel.setBackground(new java.awt.Color(255, 204, 204));
-        buyLabel.setFont(new java.awt.Font("Monotype Corsiva", 1, 48)); // NOI18N
+        buyLabel.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
         buyLabel.setForeground(new java.awt.Color(255, 153, 153));
         buyLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         buyLabel.setText("Buy Medicine");
@@ -360,18 +362,25 @@ public class CustomerBuyMed extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Monotype Corsiva", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 153, 153));
+        jLabel3.setText("Kind's Pharmacy");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(buyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 879, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelBtn)))
+                        .addComponent(cancelBtn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -379,9 +388,14 @@ public class CustomerBuyMed extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelBtn))
-                .addGap(7, 7, 7)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(buyLabel)
+                        .addGap(7, 7, 7))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(cancelBtn)
+                        .addGap(18, 18, 18)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -563,6 +577,7 @@ public class CustomerBuyMed extends javax.swing.JFrame {
     private javax.swing.JLabel inputQtyLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
